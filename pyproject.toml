@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "template-python"
+version = "0.1.0"
+description = ""
+authors = ["Hanglesson <hanglesson.dev@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.13.2"
+ruff = "^0.4.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# Ruff Settings
+[tool.ruff]
+select = ["E", "F", "I", "W", "N"]
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.12
+target-version = "py312"
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+# fix = true
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.format]
+quote-style = "single"
+line-ending = "auto"
+
+[tool.ruff.lint]
+extend-select = ["I"]
+fixable = ["ALL"]
+
+[tool.ruff.lint.pydocstyle]
+# "google" | "numpy" | "pep257"
+convention = "google"
+
+# 4. Ignore `E402` (import violations) in all `__init__.py` files, and in select subdirectories.
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
